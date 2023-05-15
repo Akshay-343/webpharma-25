@@ -151,6 +151,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'akkicstm03@gmail.com'
 EMAIL_HOST_PASSWORD = 'vmnocqirythxatrr'
 EMAIL_PORT = 587
+EMAIL_RECEIVING_USER = ['akkicstm03@gmail.com']
 EMAIL_USE_TLS = True
 
 EMAIL_SUBJECT_PREFIX = '[WebPharma]'
