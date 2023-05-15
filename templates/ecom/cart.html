@@ -1,0 +1,172 @@
+{% extends 'ecom/homebase.html' %}
+{% load static %}
+{% block content %}
+
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style media="screen">
+  .button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+  .added-product {
+    background-color: #f8f8f8;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .product-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .product-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+
+  .product-details {
+    flex: 1;
+  }
+
+  .product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .product-price {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  .product-description {
+    font-size: 14px;
+    color: #555555;
+  }
+
+
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.button2 {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+</style>
+
+</head>
+
+<br><br><br><br>
+
+<div class="container">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h6 style="text-align:center;" class="panel-title">My Cart</h6>
+    </div>
+    <table class="table table-hover table-bordered" id="dev-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Action</th>
+
+        </tr>
+      </thead>
+      {% for p in products %}
+  {% if p %}
+
+      <tr>
+        <td> {{p.name}}</td>
+        <td> <img src="{% static p.product_image.url %}" alt="Profile Pic" height="50px" width="50px" /></td>
+        <td>$ {{p.price}}</td>
+        <td>{{p.description}}</td>
+            <td>
+                <a class="btn btn-danger btn-xs" href="{% url 'remove-from-cart' p.id  %}"
+                 onclick="return confirm('Are you sure you want to remove this item from the cart?');">
+                 <span class="glyphicon glyphicon-trash"></span>
+                </a>
+            </td>
+          <td>
+               <form action="{% url 'add_to_wishlist' p.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-heart btn-xs">Add to Wishlist</button>
+          </form>
+
+          </td>
+
+
+
+
+      </tr>
+      </tr>
+
+
+
+      {%else%}
+      <br><br><br>
+      <h1>no products</h1>
+      {% endif %}
+      {% endfor %}
+    </table>
+  </div>
+</div>
+<br><br><br>
+<div style="text-align: center;">
+  <button class="btn btn-danger btn-lg">Total ${{total}}</button>
+  <a href="/customer-address"><button class="btn btn-success btn-lg" ><span>Purchase </span></button></a>
+</div>
+
+
+<br><br><br><br><br>
+
+{% endblock content %}

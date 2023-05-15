@@ -1,0 +1,151 @@
+{% extends 'ecom/homebase.html' %}
+{% load static %}
+{% block content %}
+
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style media="screen">
+  .button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+  .added-product {
+    background-color: #f8f8f8;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .product-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .product-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+
+  .product-details {
+    flex: 1;
+  }
+
+  .product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .product-price {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  .product-description {
+    font-size: 14px;
+    color: #555555;
+  }
+
+
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.button2 {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+</style>
+
+</head>
+
+
+{% if added_product %}
+  <div class="added-product">
+    <h3>Added Product:</h3>
+    <div class="product-info">
+
+      <div class="product-details">
+        <p class="product-name">{{ added_product.name }}</p>
+        <p class="product-price">${{ added_product.price }}</p>
+        <p class="product-description">{{ added_product.description }}</p>
+      </div>
+    </div>
+  </div>
+{% endif %}
+<!-- wishlist.html -->
+<!-- wishlist.html -->
+{% for product in wishlist_items %}
+  <p>{{ product.name }}</p>
+  <a href="{% url 'remove_from_wishlist' product.id %}">Remove from Wishlist</a>
+{% endfor %}
+
+<p>Number of products in wishlist: {{ wishlist_count }}</p>
+<a href="{% url 'wishlist_view' %}" class="btn btn-primary">View Wishlist</a>
+
+
+
+
+
+
+<br><br><br><br>
+
+
+<br><br><br>
+<div style="text-align: center;">
+
+  <li>
+
+  </li>
+  <a style="text-decoration:none;" href="/customer-home">Continue Shopping</a>
+</div>
+
+
+<br><br><br><br><br>
+
+{% endblock content %}
