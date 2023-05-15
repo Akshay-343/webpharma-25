@@ -138,13 +138,24 @@ STATIC_ROOT = Path(BASE_DIR) / 'staticfiles'
 LOGIN_REDIRECT_URL = '/afterlogin'
 
 # for contact us give your gmail id and password
-EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = '67ff9fc620e7e8'
-EMAIL_HOST_PASSWORD = '029477ec73f361'
-EMAIL_PORT = '2525'
+#EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+#EMAIL_HOST_USER = '67ff9fc620e7e8'
+#EMAIL_HOST_PASSWORD = '029477ec73f361'
+#EMAIL_PORT = '2525'
 # this process is required because google blocks apps authentication by default
-EMAIL_RECEIVING_USER = ['jennbeckham45@gmail.com']  # email on which you will receive messages sent from website
+#EMAIL_RECEIVING_USER = ['jennbeckham45@gmail.com']  # email on which you will receive messages sent from website
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'akkicstm03@gmail.com'
+EMAIL_HOST_PASSWORD = 'vmnocqirythxatrr'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_SUBJECT_PREFIX = '[WebPharma]'
+DEFAULT_FROM_EMAIL = 'WebPharma <contact@webpharma.com>'
+SITE_ID = 1
 
 GRAPH_MODELS = {
   'all_applications': True,
