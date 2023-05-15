@@ -148,10 +148,10 @@ LOGIN_REDIRECT_URL = '/afterlogin'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'akkicstm03@gmail.com'
+EMAIL_HOST_USER = 'jennbeckham45@gmail.com'
 EMAIL_HOST_PASSWORD = 'vmnocqirythxatrr'
 EMAIL_PORT = 587
-EMAIL_RECEIVING_USER = ['akkicstm03@gmail.com']
+EMAIL_RECEIVING_USER = ['jennbeckham45@gmail.com']
 EMAIL_USE_TLS = True
 
 EMAIL_SUBJECT_PREFIX = '[WebPharma]'
